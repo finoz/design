@@ -1,0 +1,38 @@
+:root {
+	--color-primary: #{$color-primary};
+	--color-secondary: #{$color-secondary};
+	--color-tertiary: #{$color-tertiary};
+}
+body {
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	font-weight: lighter;
+	line-height: $line-height-base;
+	text-align: left;
+	color: $color-black;
+	background-color: $color-white;
+	*{
+		box-sizing: border-box;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+	@extend %headings !optional;
+	font-size: $font-size-base;
+	font-weight: normal;
+}
+
+figure {
+	margin: 0;
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+ul,ol {
+	list-style-position: inside;
+}

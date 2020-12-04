@@ -1,0 +1,253 @@
+/**
+* preso e ripulito da bootstrap 4
+*/
+
+// Textual form controls
+
+.form-label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	font-size: $font-size-sm;
+	font-weight: 400;
+	color: $label-color;
+	text-transform: uppercase;
+	transition: all 300ms $ease-out;
+	&-link {
+		font-size: $font-size-base*0.75;
+		text-transform: none;
+		font-style: italic;
+	}
+}
+
+.form-note {
+	font-size: $font-size-base*0.75;
+	color: rgba($label-color,0.7);
+	padding-left: $font-size-base/4;
+	a {
+		text-decoration: underline;
+	}
+}
+
+.form-title {
+	@include heading(4);
+	margin: $font-size-base*2 0 $font-size-base 0;
+	color: $label-color;
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	padding: 0 $font-size-base/2;
+	font-size: $font-size-sm;
+	height: $input-line-height;
+	line-height: $input-line-height;
+	color: $input-color;
+	background-color: $input-bg;
+	background-clip: padding-box;
+	border: 1px solid $input-border-color;
+	transition: all 300ms $ease-out;
+	// Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+	border-radius: $input-border-radius;
+	// Unstyle the caret on `<select>`s in IE10+.
+	&::-ms-expand {
+		background-color: $input-bg;
+		border: 0;
+	}
+
+	// Focus
+	&:focus {
+		color: $input-focus-color;
+		background-color: $input-focus-bg;
+		border: 1px solid $input-focus-border-color;
+		outline: 0;
+		box-shadow: $input-focus-box-shadow;
+	}
+
+	// Placeholder
+	&::placeholder {
+		color: $input-placeholder-color;
+		// Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+		opacity: 0.7;
+	}
+
+	// Disabled and read-only inputs
+	//
+	// HTML5 says that controls under a fieldset > legend:first-child won't be
+	// disabled if the fieldset is disabled. Due to implementation difficulty, we
+	// don't honor that edge case; we style them as disabled anyway.
+	&:disabled,
+	&[readonly] {
+		background-color: $input-muted-bg;
+		// iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+		opacity: 1;
+	}
+}
+
+select.form-control {
+	&:focus::-ms-value {
+		// Suppress the nested default white text on blue background highlight given to
+		// the selected option text when the (still closed) <select> receives focus
+		// in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
+		// match the appearance of the native widget.
+		// See https://github.com/twbs/bootstrap/issues/19398.
+		color: $input-color;
+		background-color: $input-bg;
+	}
+}
+
+// Make file inputs better match text inputs by forcing them to new lines.
+.form-control-file,
+.form-control-range {
+	display: block;
+	width: 100%;
+}
+
+// stylelint-disable no-duplicate-selectors
+.form-group-select {
+	position: relative;
+	&::before {
+		content: "";
+		pointer-events: none;
+		position: absolute;
+		z-index: 2;
+		bottom: $font-size-base;
+		right: $font-size-base;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: $font-size-base/2 $font-size-base/2 0 $font-size-base/2;
+		border-color: rgba($label-color,0.7) transparent transparent transparent;
+	}
+	select.form-control {
+		background-color: $input-bg;
+		-webkit-appearance: none;
+		&:focus {
+			outline: 0;
+			box-shadow: 0 0 0 transparent;
+		}
+	}
+}
+select.form-control {
+	&[size],
+	&[multiple] {
+		height: auto;
+	}
+}
+
+textarea.form-control {
+	height: auto;
+	resize: none;
+}
+
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
+.form-check {
+	position: relative;
+	display: block;
+	border: 0 solid;
+	.form-control {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		height: 1px;
+		width: 1px;
+		opacity: 0;
+	}
+	.pseudo-input {
+		position: relative;
+		width: $font-size-base*1.5;
+		height: $font-size-base*1.5;
+		display: inline-block;
+		border: 1px solid $input-border-color;
+		border-radius: $input-border-radius/2;
+		background-color: $input-bg;
+		margin-right: $font-size-base/2;
+		top: $font-size-base/4;
+	}
+	.pseudo-input + * {
+		margin: 0;
+		display: inline;
+	}
+	.form-control:focus + .pseudo-input {
+		border: 1px solid $input-focus-border-color;
+	}
+	.form-control:checked + .pseudo-input {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+		&::before {
+			content: "";
+			z-index: 2;
+			position: absolute;
+			top: 0;
+			left: 30%;
+			width: 40%;
+			height: 80%;
+			border-bottom: 2px solid rgba($color-white, .8);
+			border-right: 2px solid rgba($color-white, .8);
+			transform: rotate(45deg);
+			transform-origin: center;
+		}
+	}
+	/* variante radio **/
+	[type="radio"].form-control + .pseudo-input {
+		border-radius: 50%;
+	}
+	[type="radio"].form-control:checked + .pseudo-input {
+		&::before {
+			width:  50%;
+			height: 50%;
+			top: 50%;
+			left: 50%;
+			background-color: rgba($color-black, .8);
+			border: 0 solid;
+			border-radius: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+
+	.form-label {
+		display: inline-block;
+		font-weight: normal;
+		color: $color-black;
+		text-transform: none;
+		margin-bottom: 0; // Override default `<label>` bottom margin
+	}
+	&-inline {
+		.form-label {
+			width: auto;
+			padding-right: $font-size-base*1.5;
+		}
+	}
+}
+
+// Fornm group
+.form-group {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: $font-size-base*1.5;
+}
+
+.form-cta {
+	@include btn-primary();
+	margin-bottom: $font-size-base/2;
+	@include breakpoint-up(sm) {
+		width: auto;
+	}
+	&-secondary {
+		margin-bottom: $font-size-base/2;
+		@include btn-secondary();
+		@include breakpoint-up(sm) {
+			width: auto;
+		}
+	}
+}
+[class*='form-cta'] + [class*='form-cta'] {
+	@include breakpoint-up(sm) {
+		margin-left: $font-size-base;
+	}
+}

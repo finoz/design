@@ -1,0 +1,10 @@
+.page-footer {
+	position: relative;
+	z-index: 2;
+	font-size: $font-size-sm;
+	padding: $font-size-base*5 0;
+	text-align: center;
+	&-inner {
+		@include container(map-get($breakpoints, md),$font-size-base*1.5);
+	}
+}

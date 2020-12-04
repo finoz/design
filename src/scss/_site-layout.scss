@@ -1,0 +1,29 @@
+#main {
+	margin-top: $header-height-mobile;
+	@include breakpoint-up(md) {
+		margin-top: $header-height-desktop;
+	}
+}
+.page-content {
+	@include container(map-get($breakpoints,md), $font-size-base*1.25);
+	@include breakpoint-up(md) {
+		padding-left: $font-size-base*2;
+		padding-right: $font-size-base*2;
+		font-size: $font-size-copy;
+	}
+	@for $i from 1 to 5 {
+		.heading-0#{$i} {
+			@include heading($i);
+		}
+	}
+	p, ul, ol {
+		margin-bottom: 1em;
+	}
+	figure {
+		margin-bottom: 1em;
+		figcaption {
+			margin-top: $font-size-base/2;
+			@include note;
+		}
+	}
+}

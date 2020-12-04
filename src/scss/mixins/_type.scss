@@ -1,0 +1,48 @@
+@mixin heading($level) {
+	font-family: $font-family-display;
+	margin-top: 0.1em;
+	margin-bottom: 0.5em;
+	line-height: $line-height-headings;
+	@if ($level == 1) {
+		font-size: $font-size-xl;
+		@include breakpoint-up(md) {
+			font-size: $font-size-huge;
+		}
+	}
+	@else if ($level == 2) {
+		font-size: $font-size-lg;
+		@include breakpoint-up(sm) {
+			font-size: $font-size-xxl;
+		}
+	}
+	@else if ($level == 3) {
+		font-size: $font-size-md;
+		@include breakpoint-up(sm) {
+			font-size: $font-size-xl;
+		}
+	}
+	@else if ($level == 4) {
+		font-family: $font-family-base;
+		font-weight: bold;
+		font-size: $font-size-md;
+		@include breakpoint-up(sm) {
+			font-size: $font-size-lg;
+		}
+	}
+}
+
+@mixin note() {
+	font-size: $font-size-sm;
+}
+
+@mixin copy() {
+	font-size: $font-size-sm;
+	line-height: $line-height-base;
+	font-weight: 400;
+	p, & p {
+		margin-bottom: 1em;
+	}
+	@include breakpoint-up(md) {
+		font-size: $font-size-copy;
+	}
+}

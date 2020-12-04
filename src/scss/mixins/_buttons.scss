@@ -1,0 +1,80 @@
+@mixin btn() {
+	color: $color-black;
+	background-color: transparent;
+	display: inline-block;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+	vertical-align: middle;
+	user-select: none;
+	text-transform: none;
+	transition: all 300ms $ease-out;
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: none;
+		outline: 0;
+		box-shadow: 0 0 transparent;
+	}
+}
+
+@mixin btn-primary($txt: $color-white, $bg: $color-primary) {
+	@include btn();
+	position: relative;
+	width: auto;
+	padding: $font-size-base*0.75 $font-size-base*1.25;
+	font-weight: bold;
+	font-size: $font-size-base;
+	text-transform: uppercase;
+	color: $txt;
+	background-color: $bg;
+	border-radius: $border-radius;
+	border: 2px solid $bg;
+	transition: all 300ms $ease-out;
+	box-shadow: $shadow;
+	@include breakpoint-down(sm){
+		width: 100%;
+	}
+	&:focus,
+	&:hover {
+		color: $txt;
+		background-color: darken($bg,5%);
+		border-color: darken($bg,5%);
+		box-shadow: $shadow-hover;
+	}
+
+}
+
+@mixin btn-secondary($color: $color-text) {
+	@include btn-primary();
+	color: $color;
+	border-color: $color;
+	background-color: transparent;
+	&:focus,
+	&:hover {
+		color: inherit;
+		border-color: inherit;
+		background-color: rgba($color,0.1);
+	}
+}
+
+@mixin btn-light($color: $color-text) {
+	@include btn-primary();
+	background: none;
+	border-color: transparent;
+	color: $color;
+	padding-left: 0;
+	padding-right: 0;
+	position: relative;
+	text-decoration: underline;
+	border-radius: 0;
+	box-shadow: 0 0 0 transparent;
+	&:focus,
+	&:hover {
+		color: lighten($color,50%);
+		border-color: transparent;
+		background-color: transparent;
+		box-shadow: 0 0 0 transparent;
+	}
+}

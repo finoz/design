@@ -1,0 +1,110 @@
+// COLORS
+/**
+* https://robots.thoughtbot.com/controlling-color-with-sass-color-functions
+*/
+
+/** TODO
+* verificare dove è giusto mantenere le css-vars e dove è meglio riportarsi le sass-vars
+* fare un mixin per poter agire con l'alfa sulle css-vars (trasformare hex in rgb, per poi inserirlo in un rgba)
+* rivedere nominazione parametri buttons
+* giro completo
+*
+*/
+
+/* brand colors*/
+$bittersweet: #FF645B;
+$royal-blue-dark: #1E336D;
+$powder-blue: #A8DADC;
+
+$rich-black: #111111;
+$honeydew: #F1FAEE;
+
+/**/
+
+// site colors
+$color-primary: $bittersweet;
+$color-secondary: $royal-blue-dark;
+$color-tertiary: $powder-blue;
+$color-black: $rich-black;
+$color-white: $honeydew;
+
+$color-text: $rich-black;
+$color-bg: $color-white;
+$color-link: $bittersweet;
+
+$link-decoration: none;
+$link-hover-decoration: underline;
+$link-focus-box-shadow: 0 0 0 transparent;
+
+// EASE + MISC
+$ease-out: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$ease-in: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$shadow: 0 10px 20px rgba($color-black,0.2);
+$shadow-hover: 0 5px 10px rgba($color-black,0.15), 0 -5px -4px rgba($color-black,0.15);
+$border-radius: 3px;
+
+// FONTS
+$font-family-sans-serif: 'Karla';
+$font-family-serif: 'Prata';
+$font-family-display: $font-family-serif;
+$font-family-base: $font-family-sans-serif;
+
+// FONTS & TYPO SIZES
+
+$font-size-base:              16px;
+
+$font-size-sm:                14px;
+$font-size-copy:              20px;
+$font-size-md:                24px;
+$font-size-lg:                34px;
+$font-size-xl:                48px;
+$font-size-xxl:               54px;
+$font-size-huge:              64px;
+
+/* calc of heading in mixin/types */
+
+$header-height-mobile: $font-size-base * 6;
+$header-height-desktop: $font-size-base * 10;
+
+$line-height-headings: 1.25;
+$line-height-base: 1.5;
+
+// LAYOUT BREAKPOINTS
+$breakpoints: (
+		xs: 36rem,//576
+		sm: 48rem,//768
+		md: 62rem,//1024
+		lg: 80rem,//1280
+		xl: 96rem, //1560
+);
+/*
+$breakpoint: map-get($breakpoints, sm);
+@include breakpoint-up(sm) {...}
+@include breakpoint-down(sm) {...}
+@include breakpoint-between(sm,md) {...}
+
+N.B.: In generale è da favorire un approccio mobile-first
+ */
+
+
+// INPUTS / FORMS
+
+$input-line-height: $font-size-base * 3.5;
+$input-color: $color-text;
+$label-color: $color-text;
+$input-placeholder-color: $color-text;
+$input-bg: $color-bg;
+$input-border-color: rgba($color-text,0.3);
+$input-border-width: 1px;
+$input-border-radius: $border-radius;
+
+$input-muted-color: $color-text;
+$input-muted-bg: transparent;
+
+$input-focus-color: darken($color-text,10%);
+$input-focus-bg: lighten($color-bg,50%);
+$input-focus-border-color: $color-text;
+$input-focus-box-shadow: 0 0 transparent;
+
+$form-feedback-valid-color: green;
+$form-feedback-invalid-color: red;

@@ -29,6 +29,6 @@
 		"is-webpack-dev-server": "^0.0.2"
 	},
 	"dependencies": {
-		"normalize.css": "^8.0.0"
+		"normalize.css": "^8.0.1"
 	}
 }
