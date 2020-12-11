@@ -1,0 +1,8 @@
+<section class="block block-naif-slider" data-component="naifSlider" data-count="8">
+	<div class="block-inner">
+		<?php for($i=1;$i<5;$i++) { ?>
+			<figure class="block-card"><img src="images/illustrations/ortiz_fancyplants_<?= $i; ?>.png" alt="Blush.design illustration n° <?= $i; ?> - by Ortiz"></figure>
+			<figure class="block-card"><img src="images/illustrations/vega_stuckathome_<?= $i; ?>.png" alt="Blush.design illustration <?= $i; ?> - by Vega"></figure>
+		<?php } ?>
+	</div>
+</section>

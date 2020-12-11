@@ -1,0 +1,28 @@
+.block-naif-slider {
+	position: relative;
+	overflow: auto;
+	width: 100vw;
+	margin-left: -$font-size-base;
+	margin-right: -$font-size-base;
+	@for $i from 1 through 100 {
+		&[data-count="#{$i}"] {
+			.block-inner {
+				width: #{$i * 75}vw;
+				grid-template-columns: repeat(#{$i},1fr);
+			}
+		}
+	}
+	.block {
+		&-inner {
+			display: grid;
+			padding-left: $font-size-base;
+			grid-column-gap: $font-size-base;
+			grid-template-rows: 1fr;
+			padding-right: $font-size-base;
+		}
+		&-card {
+			background-color: lighten($color-white,5%);
+			box-shadow: $shadow;
+		}
+	}
+}
