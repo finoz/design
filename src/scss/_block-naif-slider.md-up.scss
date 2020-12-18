@@ -1,0 +1,18 @@
+@include breakpoint-up(md) {
+	.block-naif-slider,
+	.block-naif-slider[data-count] {
+		.block {
+			&-inner {
+				width: auto;
+				height: auto;
+			}
+			&-card {
+				height: 100%;
+				img {
+					height: 70vh;
+					width: auto;
+				}
+			}
+		}
+	}
+}
