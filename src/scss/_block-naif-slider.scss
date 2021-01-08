@@ -14,7 +14,7 @@
 			display: grid;
 			grid-column-gap: $font-size-base;
 			grid-template-rows: 1fr;
-			padding: $font-size-base*2 $font-size-base;
+			padding: $font-size-base*2 0;
 		}
 		&-card {
 			background-color: lighten($color-white,5%);

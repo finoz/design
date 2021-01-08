@@ -2,8 +2,8 @@
 @import "variables";
 
 @import "mixins/mixins";
-@import "base-reboot";
-@import "base";
+@import "_reboot";
+@import "pillars";
 @import "base-form";
 
 @import "micro-header-toggle-menu";

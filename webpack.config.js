@@ -42,7 +42,7 @@ module.exports = {
 		publicPath: '/dist/'
 	},
 	devServer: {
-		contentBase: '/dist/',
+		contentBase: '/demo/dist/',
 		disableHostCheck: true
 	},
 	resolve: {
