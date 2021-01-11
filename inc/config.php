@@ -19,5 +19,5 @@ define('SITE_LANG',"IT");
 define('FE_URL', './');
 define('DEV_URL', "http://localhost:3001/");
 
-define('SITE_META_TITLE','ilfinoz');
-define('SITE_META_DESCRIPTION','Faccio cose');
+define('SITE_META_TITLE','Fnz Design System');
+define('SITE_META_DESCRIPTION','Implementazione di un boilerplate-ish da declinare nei progetti personali');

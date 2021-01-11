@@ -8,10 +8,10 @@
 		</div>
 		<nav class="header-navigation">
 			<ul>
-				<li><a href="#section-01">Sezione 1</a></li>
-				<li><a href="#section-02">Sezione 2</a></li>
-				<li><a href="#section-03">Sezione 3</a></li>
-				<li class="header-navigation-highlight"><a href="#section-04">Contattaci</a></li>
+				<li><a href="#">Chi</a></li>
+				<li><a href="#">Cosa</a></li>
+				<li><a href="#">Quando</a></li>
+				<li class="header-navigation-highlight"><a href="#">Perché</a></li>
 			</ul>
 		</nav>
 	</div>

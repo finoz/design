@@ -21,7 +21,7 @@
 			position: relative;
 			width: auto;
 			height: $font-size-base*1.25;
-			fill: $color-black;
+			fill: $color-text;
 		}
 	}
 	&-toggle-menu {
@@ -33,22 +33,48 @@
 		left: -100vw;
 		width: 100vw;
 		height: 100vh;
-		padding: $font-size-base;
+		padding: $header-height-mobile $font-size-base $font-size-base $font-size-base;
 		background-color: var(--color-primary);
 		z-index: 3;
 		transition: left 300ms ease;
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
+		overflow: auto;
 		ul {
 			list-style: none;
 			li {
-				padding: $font-size-base 0;
+				padding: 0 0 $font-size-base 0;
 				text-align: center;
 				a {
-					font-weight: bold;
 					color: currentColor;
+				}
+			}
+		}
+		// first level navigation
+		> ul {
+			> li {
+				> a {
+					font-weight: bold;
 					font-size: $font-size-md;
+				}
+				// second level navigation
+				>.subnav-wrapper {
+					> ul {
+						> li {
+							> a {
+								font-weight: bold;
+							}
+							// third level navigation
+							> ul {
+								> li {
+									> a {
+
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -56,7 +82,12 @@
 	.header-nav-open &,
 	.prescrolled.header-nav-open &,
 	.scrolled.header-nav-open & {
-		color: $color-white;
+		color: $color-bg;
+		.header-brand {
+			#logo {
+				fill: $color-bg;
+			}
+		}
 		.header-navigation {
 			left: 0;
 		}
@@ -65,16 +96,16 @@
 		}
 	}
 	.pre-scrolled & {
-		color: $color-white;
-		background-color: $color-black;
+		color: $color-bg;
+		background-color: $color-text;
 		box-shadow: $shadow;
 		height: $header-height-mobile*0.75;
 		a {
-			color: $color-white;
+			color: $color-bg;
 		}
 		.header-brand {
 			#logo {
-				fill: $color-white;
+				fill: $color-bg;
 			}
 		}
 	}
@@ -89,8 +120,12 @@
 		background-color: transparent;
 		&-inner {
 			padding: 0 $font-size-base*2;
+			align-items: stretch;
 		}
 		&-brand {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 			#logo {
 				height: $font-size-base * 2;
 			}
@@ -108,17 +143,15 @@
 			display: block;
 			padding: 0;
 			font-family: $font-family-sans-serif;
+			justify-content: stretch;
 			ul {
 				list-style: none;
 				li {
-					display: inline-block;
 					padding: 0;
-					margin: 0 0 0 $font-size-base*2;
 					a {
 						color: inherit;
-						font-size: $font-size-base;
 					}
-					&.page-navigation-highlight {
+					&.header-navigation-highlight {
 						a {
 							@include btn-secondary();
 							text-transform: none;
@@ -126,9 +159,106 @@
 					}
 				}
 			}
+			// first level navigation
+			> ul {
+				height: 100%;
+				display: flex;
+				> li {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					padding: 0 $font-size-base 0 $font-size-base;
+					> a {
+						font-size: $font-size-base;
+
+					}
+					&.has-subnav {
+						> a {
+							&::after {
+								content: '▼';
+								padding-left: $font-size-base/2;
+								font-size: $font-size-base/2;
+							}
+						}
+						&:hover,
+						&:focus,
+						&:focus-within {
+							background-color: darken($color-bg,3%);
+							> a {
+								&::after {
+									content: '►';
+								}
+							}
+							>.subnav-wrapper {
+								max-height: 100vh;
+							}
+						}
+					}
+					// second level navigation
+					>.subnav-wrapper {
+						overflow: hidden;
+						max-height: 0;
+						position: fixed;
+						top : $header-height-desktop;
+						left: 0;
+						width: 100%;
+						background: linear-gradient(darken($color-bg,3%), darken($color-bg,6%));
+						box-shadow: $shadow-bottom;
+						transition: all 150ms $ease-out;
+						> ul {
+							position: relative;
+							@include container(map-get($breakpoints, lg), $font-size-base*2);
+							padding-top: $font-size-base *3;
+							padding-bottom: $font-size-base *3;
+							display: flex;
+							justify-content: space-evenly;
+							> li {
+								> a {
+									font-weight: bold;
+								}
+								// third level navigation
+								> ul {
+									> li {
+										> a {
+
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 		.pre-scrolled & {
-
+			height: $header-height-desktop*0.5;
+			.header-navigation {
+				ul {
+					li {
+						&.header-navigation-highlight {
+							a {
+								@include btn-secondary($color-bg);
+								text-transform: none;
+							}
+						}
+					}
+				}
+				> ul {
+					> li {
+						&.has-subnav {
+							&:hover,
+							&:focus,
+							&:focus-within {
+								background-color: lighten($color-text,10%);
+							}
+						}
+						>.subnav-wrapper {
+							top: $header-height-desktop*0.5;
+							background: lighten($color-text,10%);
+						}
+					}
+				}
+			}
 		}
 	}
 }

@@ -3,6 +3,7 @@
 	--color-secondary: #{$color-secondary};
 	--color-tertiary: #{$color-tertiary};
 }
+
 body {
 	font-family: $font-family-base;
 	font-size: $font-size-base;
@@ -15,6 +16,9 @@ body {
 		box-sizing: border-box;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+	}
+	&.header-nav-open {
+		overflow: hidden;
 	}
 }
 

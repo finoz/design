@@ -7,16 +7,15 @@ include 'utils/is_localhost.php';
 <!DOCTYPE html>
 <html lang="<?= SITE_LANG; ?>">
 <?php include "inc/head.php"; ?>
-<body data-page="demo">
+<body data-page="accessibility">
 	<div class="page">
-		<?php include "inc/block-header.php"; ?>
+		<?php include "inc/block-header-mega.php"; ?>
 		<main id="main">
+			<?php include "inc/block-form.php"; ?>
 			<?php include "inc/block-hero.php"; ?>
-			<section class="page-content">
-				<?php include "inc/block-naif-slider.php"; ?>
-				<?php include "inc/block-typography.php"; ?>
-			</section>
+			<?php include "inc/block-typography.php"; ?>
 		</main>
+		<?php include "inc/block-footer.php"; ?>
 	</div>
 </body>
 <?php include "inc/scripts.php"; ?>
