@@ -1,0 +1,20 @@
+:focus {
+	@include focus;
+}
+.a11y {
+	&-skip-to-cta {
+		position: absolute;
+		top: 0;
+		left: 0;
+		font-size: $font-size-sm;
+		font-weight: bold;
+		text-transform: uppercase;
+		@include visually-hidden;
+		&:focus {
+			visibility: visible;
+			width: auto;
+			height: auto;
+			clip: auto;
+		}
+	}
+}

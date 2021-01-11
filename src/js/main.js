@@ -1,7 +1,7 @@
 import utils from './utils';
+import a11yUtils from './a11yUtils';
 import '../scss/main.scss';
-
-import naifSlider from './blockNaifSlider';
+import naifSlider from './components/blockNaifSlider';
 
 class Setup {
 	constructor(){
@@ -9,6 +9,8 @@ class Setup {
 	};
 	init() {
 		console.log(this.log);
+		let a11y = new a11yUtils;
+		a11y.init();
 		utils.anchorHandler('.header');
 		window.addEventListener('scroll', ()=> {
 			utils.scrollHandler(document.querySelector('.header'));
@@ -23,6 +25,7 @@ class Setup {
 		let components = [];
 		componentSelector.forEach((component, index) => {
 			switch(component.dataset.component) {
+				// TODO import script just if needed
 				case 'naifSlider':
 					component[index] = new naifSlider({
 						slider: component,
@@ -38,4 +41,8 @@ class Setup {
 	}
 }
 let setup = new Setup();
-setup.init();
+document.addEventListener("readystatechange", (e) =>{
+	if(e.target.readyState === 'complete') {
+		setup.init();
+	}
+});
