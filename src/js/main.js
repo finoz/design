@@ -1,6 +1,8 @@
+import whatInput from 'what-input';
 import utils from './utils';
-import a11yUtils from './a11yUtils';
+import Navigation from './components/navigation';
 import '../scss/main.scss';
+import Dialog from './components/dialog';
 import naifSlider from './components/blockNaifSlider';
 
 class Setup {
@@ -9,8 +11,6 @@ class Setup {
 	};
 	init() {
 		console.log(this.log);
-		let a11y = new a11yUtils;
-		a11y.init();
 		utils.anchorHandler('.header');
 		window.addEventListener('scroll', ()=> {
 			utils.scrollHandler(document.querySelector('.header'));
@@ -18,6 +18,8 @@ class Setup {
 		utils.toggleMenu();
 		utils.autocloseMenu();
 		this.initComponents();
+		//TODO: create global storing object;
+		console.log("TODO");
 	}
 
 	initComponents() {
@@ -27,11 +29,14 @@ class Setup {
 			switch(component.dataset.component) {
 				// TODO import script just if needed
 				case 'naifSlider':
-					component[index] = new naifSlider({
+					component[index] = new NaifSlider({
 						slider: component,
 						alignTo: '.header-brand'
 					});
 					component[index].init();
+					break;
+				case 'navigation':
+					component[index] = new Navigation();
 					break;
 				default:
 					//

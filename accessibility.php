@@ -12,6 +12,9 @@ include 'utils/is_localhost.php';
 		<?php include "inc/block-header-mega.php"; ?>
 		<main id="main">
 			<?php include "inc/block-form.php"; ?>
+			<div class="page-content">
+				<button class="btn-primary" data-component="classChanger" data-target=".dialog-overlay-demo">Open dialog</button>
+			</div>
 			<?php include "inc/block-hero.php"; ?>
 			<?php include "inc/block-typography.php"; ?>
 		</main>

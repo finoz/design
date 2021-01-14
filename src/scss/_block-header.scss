@@ -174,15 +174,17 @@
 					}
 					&.has-subnav {
 						> a {
+							.touch & {
+								// prevent click link. logic on
+								pointer-events: none;
+							}
 							&::after {
 								content: '▼';
 								padding-left: $font-size-base/2;
 								font-size: $font-size-base/2;
 							}
 						}
-						&:hover,
-						&:focus,
-						&:focus-within {
+						&.open {
 							background-color: darken($color-bg,3%);
 							> a {
 								&::after {
@@ -205,6 +207,18 @@
 						background: linear-gradient(darken($color-bg,3%), darken($color-bg,6%));
 						box-shadow: $shadow-bottom;
 						transition: all 150ms $ease-out;
+						>.a11y-sr-link {
+							left: 50%;
+							top: $font-size-base*0.5;
+							transform: translateX(-50%);
+							.touch &,
+							[data-whatinput="keyboard"] & {
+								@include btn-sr($hidden: false);
+								left: 50%;
+								top: $font-size-base*0.5;
+								transform: translateX(-50%);
+							}
+						}
 						> ul {
 							position: relative;
 							@include container(map-get($breakpoints, lg), $font-size-base*2);

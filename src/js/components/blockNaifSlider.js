@@ -1,4 +1,4 @@
-class naifSlider {
+class NaifSlider {
 	constructor(params = {}){
 		const defaults = {
 			slider: document.querySelector('.naifSlider'),
@@ -32,4 +32,4 @@ class naifSlider {
 	}
 };
 
-export {naifSlider as default};
+export {NaifSlider as default};

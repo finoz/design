@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" data-component="navigation">
 	<div class="header-inner">
 		<a class="a11y-skip-to-cta" href="#main">Skip to content</a>
 		<a class="a11y-skip-to-cta" href="#footer">Skip to footer</a>
