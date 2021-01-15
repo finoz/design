@@ -66,6 +66,19 @@ class Navigation {
 		})
 	}
 
+	cloneFirstLevelLink(firstLevelLink) {
+		let subnav = firstLevelLink.closest('li').querySelector(this.selectors.subnav);
+		let label = firstLevelLink.innerText;
+		let url = firstLevelLink.getAttribute('href');
+		let link = document.createElement('a');
+		link.setAttribute('href',url);
+		link.setAttribute('tabindex','-1');
+		link.innerText = label;
+		link.classList.add(this.selectors.a11yLinkClass);
+		subnav.prepend(link);
+	}
+
+
 	listenForMouseEvents() {
 		let everySubnavParentItem = this.navigationComponent.querySelectorAll(this.selectors.subnavParentItems);
 		everySubnavParentItem.forEach((item)=>{
@@ -98,29 +111,17 @@ class Navigation {
 		})
 	}
 
-	cloneFirstLevelLink(firstLevelLink) {
-		let subnav = firstLevelLink.closest('li').querySelector(this.selectors.subnav);
-		let label = firstLevelLink.innerText;
-		let url = firstLevelLink.getAttribute('href');
-		let link = document.createElement('a');
-		link.setAttribute('href',url);
-		link.setAttribute('tabindex','-1');
-		link.innerText = label;
-		link.classList.add(this.selectors.a11yLinkClass);
-		subnav.prepend(link);
-	}
-
 	openSubnav(activeListItem) {
-		console.log('open');
+		//console.log('open');
 		let activeSubnav = activeListItem.querySelector(this.selectors.subnav);
 		activeListItem.classList.add(this.selectors.subnavOpenClass);
 		a11yUtils.toggleEveryTabindex(activeSubnav,0);
-		a11yUtils.openedModalHandler(activeSubnav);
+		a11yUtils.focusTrapOn(activeSubnav);
 		this.subNavOpenBoolean = true;
 	}
 
 	closeSubnav() {
-		console.log('close');
+		//console.log('close');
 		this.subNavOpenBoolean = false;
 		let everySubnavParentItem = this.navigationComponent.querySelectorAll(this.selectors.subnavParentItems);
 		let everySubnav = this.navigationComponent.querySelectorAll(this.selectors.subnav);
@@ -130,7 +131,7 @@ class Navigation {
 		everySubnav.forEach((subnav)=>{
 			a11yUtils.toggleEveryTabindex(subnav,-1);
 		});
-		a11yUtils.closedModalHandler();
+		a11yUtils.focusTrapOff();
 	}
 
 }

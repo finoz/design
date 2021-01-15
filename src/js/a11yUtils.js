@@ -12,10 +12,13 @@ const a11yUtils = {
 	focusedElementsBeforeModal: [],
 
 	getFirstFocusable(parent) {
-		return parent.querySelector(this.focusableSelectors);
+		return this.getAllFocusableElements(parent)[0];
 	},
+
 	getAllFocusableElements(parent) {
-		return parent.querySelectorAll(this.focusableSelectors);
+		return [...parent.querySelectorAll(this.focusableSelectors)].filter(element => {
+			return (element.offsetWidth > 0 || element.offsetHeight > 0);
+		});
 	},
 
 	toggleEveryTabindex(wrapper, value = -1) {
@@ -28,7 +31,7 @@ const a11yUtils = {
 		})
 	},
 
-	openedModalHandler(modal) {
+	focusTrapOn(modal) {
 		this.focusedElementsBeforeModal.push(document.activeElement);
 		const focusableElements = [...this.getAllFocusableElements(modal)];
 		const firstFocusableElement = focusableElements[0];
@@ -37,7 +40,8 @@ const a11yUtils = {
 		modal.addEventListener('keydown',(e) => this.trapTabKey(e, firstFocusableElement, lastFocusableElement));
 	},
 
-	closedModalHandler() {
+	// TODO remove eventlistener: checkout https://wangchujiang.com/hotkeys/ library
+	focusTrapOff() {
 		if(this.focusedElementsBeforeModal.length === 0) {
 			return;
 		}
